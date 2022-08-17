@@ -78,6 +78,4 @@ class BCSNet:
         wif = self.network.parse.wif(secret_key)
         exponents = wif.secret_exponent()
         solver = buildhash([exponents], [generators])
-
-        self.signed_new_tx = self.unsigned_tx.sign(solver)
-        self.signed_new_tx_hex = self.signed_new_tx.as_hex()
+        return unsigned_tx.sign(solver).as_hex()
