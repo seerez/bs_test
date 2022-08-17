@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ txobject.trasaction_pk }}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'img/logo.png'%}">
+</head>
+<body>
+    <a href="/" class="double-border-button">На главную</a>
+    <table class="tableWidget">
+        <tr>
+            <th colspan="2">Описание транзации: {{ txobject.transaction_pk  }}</th>
+        </tr>
+        <tr>
+            <td>ID Транзакции</td>
+            <td>{{ txobject.transaction_pk  }}</td>
+        </tr>
+        <tr>
+            <td>Дата транзации</td>
+            <td>{{ txobject.datetime||date:"d E Y" }}</td>
+        </tr>
+        <tr>
+            <td>Сумма транзации</td>
+            <td>{{ txobject.value }} BCS</td>
+        </tr>
+        <tr>
+            <td>Описание</td>
+            <td> <textarea cols="64" readonly="True">{{ txobject.description }}</textarea></td>
+        </tr>
+    </table>
+</body>
+</html>

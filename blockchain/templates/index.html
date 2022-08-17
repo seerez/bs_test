@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Transactions</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="icon" type="image/png" sizes="48x48" href="{% static 'img/logo.png'%}">
+    </head>
+    <body>
+        <a href="update/" class="double-border-button">Отправить транзакцию</a>
+        <table class="tableWidget">
+            <tr>
+                <th colspan="2">Список транзаций:</th>
+            </tr>
+            {% for tx in transactions %}
+                <tr>
+                    <td><a href="tx/{{ tx.transaction_pk }}">{{ tx.transaction_pk }}</a></td>
+                    <td></td>
+                </tr>
+                <article>
+                    <ul>
+                        <li>
+                            <a href="tx/{{ tx.transaction_pk }}">{{ tx.transaction_pk }}</a>
+                            {{ tx.value }}
+                        </li>
+                        <li>
+                            Дата операции: {{ tx.datetime|date:"d E Y" }}
+                        </li>
+                    </ul>
+                </article>
+            {% endfor %}
+        </table>
+    </body>
+</html>
